@@ -1,3 +1,5 @@
+import random
+
 verbs = {
     "run": "ran",
     "eat": "ate",
@@ -51,3 +53,12 @@ verbs = {
     "bleed": "bled",
 }
 
+def Game():
+    chosenVerb = random.choice(list(verbs.keys()))
+    userInput = input(f"What's the past simple of {chosenVerb}?: \n").lower().strip()
+    if userInput == verbs[chosenVerb]:
+        print("Correct!")
+    else:
+        print(f"Opps, the correct answer is: {verbs[chosenVerb]}")
+
+Game()
