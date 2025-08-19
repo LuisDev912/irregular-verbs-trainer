@@ -54,11 +54,17 @@ verbs = {
 }
 
 def Game():
-    chosenVerb = random.choice(list(verbs.keys()))
-    userInput = input(f"What's the past simple of {chosenVerb}?: \n").lower().strip()
-    if userInput == verbs[chosenVerb]:
-        print("Correct!")
-    else:
-        print(f"Opps, the correct answer is: {verbs[chosenVerb]}")
+    while True:
+        chosenVerb = random.choice(list(verbs.keys()))
+        userInput = input(f"What's the past simple of {chosenVerb}?: \n").lower().strip()
+
+        #I use != instead of == to check wrong answers first
+        if userInput != verbs[chosenVerb]:
+            print(f"Opps, the correct answer is: {verbs[chosenVerb]}") 
+        else: 
+            print("Correct!")
+
+        if input("Do you want to continue? y/n: ").lower().strip() != "y":
+            break
 
 Game()
