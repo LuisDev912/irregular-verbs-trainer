@@ -1,4 +1,4 @@
-import random
+from random import choice
 
 verbs = {
     "run": "ran",
@@ -55,16 +55,16 @@ verbs = {
 
 def Game():
     while True:
-        chosenVerb = random.choice(list(verbs.keys()))
-        userInput = input(f"What's the past simple of {chosenVerb}?: \n").lower().strip()
+        chosenVerb = choice(list(verbs.keys()))
+        userInput = input(f"What's the past simple of {chosenVerb}?: \n------------------------------------------ \n ->").lower().strip()
 
         #I use != instead of == to check wrong answers first
         if userInput != verbs[chosenVerb]:
-            print(f"Opps, the correct answer is: {verbs[chosenVerb]}") 
+            print(f" ❌ Opps, the correct answer is: {verbs[chosenVerb]}") 
         else: 
-            print("Correct!")
+            print("Correct! ☑️") #using emojis is not necessary, but it makes the game more fun
 
-        if input("Do you want to continue? y/n: ").lower().strip() != "y":
+        if input("\n Do you want to continue? y/n: \n ->").lower().strip() != "y":
             break
 
 Game()
