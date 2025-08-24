@@ -1,57 +1,5 @@
 from random import choice
-
-verbs = {
-    "run": "ran",
-    "eat": "ate",
-    "go": "went",
-    "see": "saw",
-    "take": "took",
-    "come": "came",
-    "give": "gave",
-    "know": "knew",
-    "find": "found",
-    "think": "thought",
-    "make": "made",
-    "say": "said",
-    "tell": "told",
-    "write": "wrote",
-    "read": "read",
-    "speak": "spoke",
-    "begin": "began",
-    "choose": "chose",
-    "feel": "felt",
-    "leave": "left",
-    "meet": "met",
-    "put": "put",
-    "bring": "brought",
-    "build": "built",
-    "catch": "caught",
-    "cost": "cost",
-    "cut": "cut",
-    "draw": "drew",
-    "drive": "drove",
-    "fall": "fell",
-    "hear": "heard",
-    "hold": "held",
-    "keep": "kept",
-    "lose": "lost",
-    "pay": "paid",
-    "send": "sent",
-    "sit": "sat",
-    "stand": "stood",
-    "swim": "swam",
-    "teach": "taught",
-    "understand": "understood",
-    "wear": "wore",
-    "win": "won",
-    "write": "wrote",
-    "arise": "arose",
-    "awake": "awoke",
-    "bear": "bore",
-    "become": "became",
-    "begin": "began",
-    "bleed": "bled",
-}
+from verbsContainer import verbs
 
 def Game():
     points = 0
@@ -74,5 +22,5 @@ def Game():
 
         if input("\n Do you want to continue? y/n: \n ->").lower().strip() != "y":
             break
-
+    print(f"Your final score is: {points} points. Thanks for playing! 👋")
 Game()
