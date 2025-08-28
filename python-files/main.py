@@ -8,7 +8,7 @@ class Game:
 
     def info(self):
         print("The list of the verbs and its answers are: \n", verbs) #this is just for testing purposes, to see the list of verbs
-        print("\n you answered correctly {self.points} times and incorrectly {self.incorrectAnswers} times.\n")
+        print(f"\n you answered correctly {self.points} times and incorrectly {self.incorrectAnswers} times.\n")
 
     def intro(self):
         print("Welcome to the Past Simple Verb Game! 🎉\n" 
@@ -40,10 +40,17 @@ class Game:
 
             print(f"current points: {self.points}")
 
-            if input("\n Do you want to continue? y/n: \n ->").lower().strip() != "y":
-                break
+            match input("What do you want to do next?: ('y' for continue, 'n' for stop playing, 'info' for see the information, 'intro' for know how to play\n ->").lower().strip(): #this is similar to switch case in other languages or an if else statement
+                case "y":
+                    continue
+                case "info":
+                    Game.info(self)
+                case "intro":
+                    Game.intro(self)
+                case "n":
+                    break
         print(f"Your final score is: {self.points} points. Thanks for playing! 👋")
 #this is just the start, because I will implement more OOP concepts later.
 
 player = Game()
-player.info()
+player.intro()
