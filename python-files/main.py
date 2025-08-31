@@ -1,5 +1,6 @@
 from random import choice
 from verbsContainer import verbs
+from time import sleep
 
 class Game:
     def __init__(self, points = 0, incorrectAnswers = 0):
@@ -11,14 +12,20 @@ class Game:
         print(f"\n you answered correctly {self.points} times and incorrectly {self.incorrectAnswers} times.\n")
 
     def intro(self):
-        print("Welcome to the Past Simple Verb Game! 🎉\n" 
-            "the instructions are simple:" 
-            "the game will give you a verb in its base form, and you have to type its past simple form.\n" 
-            "For each correct answer, you earn a point. For each wrong answer, you lose a point.\n" 
-            "For example, if the verb is 'go', you should type 'went'.\n" 
-            "You can quit the game anytime by typing 'n' when asked if you want to continue.\n" 
-            "Let's see how good is your knowledgement! Good luck! 🍀\n" 
-            )
+        print("Welcome to the Past Simple Verb Game! 🎉")
+        sleep(1.00)
+        print("the instructions are simple:" )
+        sleep(0.60)
+        print("the game will give you a verb in its base form, and you have to type its past simple form.\n" )
+        sleep(1.80)
+        print("For each correct answer, you earn a point. For each wrong answer, you lose a point.\n" )
+        sleep(1.80)
+        print("For example, if the verb is 'go', you should type 'went'.\n" )
+        sleep(1.80)
+        print("You can quit the game anytime by typing 'n' when asked if you want to continue.\n" )
+        sleep(1.80)
+        print("Let's see how good is your knowledgement! Good luck! 🍀\n") 
+            
         if input("Do you want to start the game? y/n: \n ->").lower().strip() == "y":
             Game.mainGame(self)
             
