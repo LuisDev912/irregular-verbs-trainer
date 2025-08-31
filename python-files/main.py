@@ -47,7 +47,7 @@ class Game:
 
             print(f"current points: {self.points}")
 
-            match input("What do you want to do next?: ('y' for continue, 'n' for stop playing, 'info' for see the information, 'intro' for know how to play\n ->").lower().strip(): #this is similar to switch case in other languages or an if else statement
+            match input("\n What do you want to do next?, here are the options: \n'y' for continue, \n'n' for stop playing, \n'info' for see the information, \n'intro' for know how to play\n ->").lower().strip(): #this is similar to switch case in other languages or an if else statement
                 case "y":
                     continue
                 case "info":
@@ -57,7 +57,7 @@ class Game:
                 case "n":
                     break
         print(f"Your final score is: {self.points} points. Thanks for playing! 👋")
-#this is just the start, because I will implement more OOP concepts later.
+
 
 player = Game()
 player.intro()
