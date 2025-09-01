@@ -8,7 +8,11 @@ class Game:
         self.incorrectAnswers = incorrectAnswers
 
     def info(self):
-        print("The list of the verbs and its answers are: \n", verbs) #this is just for testing purposes, to see the list of verbs
+        for verb, past in verbs.items():
+            print(f"the {verb} verb in the past is: {past}")
+            sleep(0.75)
+        #this shows every verb with its past simple form with a line break
+        
         print(f"\n you answered correctly {self.points} times and incorrectly {self.incorrectAnswers} times.\n")
 
     def intro(self):
