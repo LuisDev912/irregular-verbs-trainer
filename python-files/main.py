@@ -31,7 +31,7 @@ class Game:
         print("Let's see how good is your knowledgement! Good luck! 🍀\n") 
             
         if input("Do you want to start the game? y/n: \n ->").lower().strip() == "y":
-            Game.mainGame(self)
+            self.mainGame()
             
     def mainGame(self): 
         while True:
@@ -51,7 +51,11 @@ class Game:
 
             print(f"current points: {self.points}")
 
-            match input("\n What do you want to do next?, here are the options: \n'y' for continue, \n'n' for stop playing, \n'info' for see the information, \n'intro' for know how to play\n ->").lower().strip(): #this is similar to switch case in other languages or an if else statement
+            action = input("\n What do you want to do next?, here are the options: \n'y' for continue, \n'n' for stop playing, \n'info' for see the information, \n'intro' for know how to play\n ->").lower().strip()
+            if action not in {"y", "n", "info", "intro"}:
+                print("not valid input. Returning to the game.")
+                continue
+            match action: #this is similar to switch case in other languages or an if else statement
                 case "y":
                     continue
                 case "info":
@@ -60,6 +64,7 @@ class Game:
                     Game.intro(self)
                 case "n":
                     break
+            
         print(f"Your final score is: {self.points} points. Thanks for playing! 👋")
 
 
