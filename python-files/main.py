@@ -2,46 +2,51 @@ from random import choice
 from verbsContainer import verbs
 from time import sleep
 
-default_sleep = 1.0
+DEFAULT_SLEEP = 1.0
 
-def print_pause(text, delay=default_sleep):
+def print_pause(text: str, delay: float = DEFAULT_SLEEP) -> None:
     print(text)
     sleep(delay)
 
 class Game:
-    def __init__(self, points = 0, incorrectAnswers = 0):
-        self.points = points
-        self.incorrectAnswers = incorrectAnswers
+    def __init__(self) -> None:
+        self.points: int = 0
+        self.incorrect_answers: int = 0
 
-    def info(self):
+    def show_info(self):
+        print("\nList of verbs and their past forms:\n")
         for verb, past in verbs.items():
-            print(f"the {verb} verb in the past is: {past}")
-            sleep(0.75)
+            print(f"{verb} → {past}")
+            sleep(0.5)
         #this shows every verb with its past simple form with a line break
         
-        print(f"\n you answered correctly {self.points} times and incorrectly {self.incorrectAnswers} times.\n")
+        print(f"\n you answered correctly {self.points} times and incorrectly {self.incorrect_answers} times.\n")
 
-    def intro(self):
-        print_pause("Welcome to the Past Simple Verb Game! 🎉")
-        print_pause("The instructions are simple:")
-        print_pause("The game will give you a verb in its base form, and you have to type its past simple form.\n", 1.5)
-        print_pause("For each correct answer, you earn a point. For each wrong answer, you lose a point.\n", 1.5)
-        print_pause("For example, if the verb is 'go', you should type 'went'.\n", 1.5)
-        print_pause("You can quit the game anytime by typing 'n' when asked if you want to continue.\n", 1.5)
-        print_pause("Let's see how good your knowledge is! Good luck! 🍀\n", 1.5)
-            
+    def show_intro(self) -> None:
+        instructions = [
+            "Welcome to the Past Simple Verb Game! 🎉",
+            "The instructions are simple:",
+            "1. The game will give you a verb in its base form, and you have to type its past simple form.",
+            "2. Each correct answer earns you 1 point, each wrong answer deducts 1 point.",
+            "3. Example: if the verb is 'go', you should type 'went'.",
+            "4. You can quit anytime by typing 'n' when asked if you want to continue.",
+            "Good luck! 🍀\n"
+        ]
+        for line in instructions:
+            print_pause(line, 1.2)
+        
         if input("Do you want to start the game? y/n: \n ->").lower().strip() == "y":
-            self.mainGame()
+            self.main_game()
             
-    def mainGame(self): 
+    def main_game(self) -> None: 
         while True:
-            chosenVerb = choice(list(verbs.keys()))
-            userInput = input(f"What's the past simple of {chosenVerb}?: \n------------------------------------------ \n ->").lower().strip()
+            chosen_verb = choice(list(verbs.keys()))
+            user_input = input(f"What's the past simple of {chosen_verb}?: \n------------------------------------------ \n ->").lower().strip()
             #I use != instead of == to check wrong answers first
-            if userInput != verbs[chosenVerb]:
-                print(f" ❌ Opps, the correct answer is: {verbs[chosenVerb]}") 
+            if user_input != verbs[chosen_verb]:
+                print(f" ❌ Opps, the correct answer is: {verbs[chosen_verb]}") 
                 self.points -= 1
-                self.incorrectAnswers += 1
+                self.incorrect_answers += 1
             else: 
                 print("Correct! ☑️") #using emojis is not necessary, but it makes the game more fun
                 self.points += 1
@@ -59,9 +64,9 @@ class Game:
                 case "y":
                     continue
                 case "info":
-                    Game.info(self)
+                    Game.show_info(self)
                 case "intro":
-                    Game.intro(self)
+                    Game.show_intro(self)
                 case "n":
                     break
             
@@ -69,4 +74,4 @@ class Game:
 
 
 player = Game()
-player.intro()
+player.show_intro()
