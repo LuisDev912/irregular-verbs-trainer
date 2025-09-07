@@ -80,5 +80,5 @@ class Game:
         print(f"\nGame Over! Your final score: {self.points} points. Thanks for playing! 👋")
 
 
-player = Game()
-player.show_intro()
+if __name__ == "__main__":
+    Game().start()
