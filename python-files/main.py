@@ -12,6 +12,7 @@ class Game:
     def __init__(self) -> None:
         self.points: int = 0
         self.incorrect_answers: int = 0
+        self.playing: bool = True
 
     def show_info(self):
         print("\nList of verbs and their past forms:\n")
@@ -50,21 +51,33 @@ class Game:
         print(f"Current score: {self.points}")
 
 
-        #     action = input("\n What do you want to do next?, here are the options: \n'y' for continue, \n'n' for stop playing, \n'info' for see the information, \n'intro' for know how to play\n ->").lower().strip()
-        #     if action not in {"y", "n", "info", "intro"}:
-        #         print("not valid input. Returning to the game.")
-        #         continue
-        #     match action: #this is similar to switch case in other languages or an if else statement
-        #         case "y":
-        #             continue
-        #         case "info":
-        #             Game.show_info(self)
-        #         case "intro":
-        #             Game.show_intro(self)
-        #         case "n":
-        #             break
-            
-        # print(f"Your final score is: {self.points} points. Thanks for playing! 👋")
+    def handle_action(self) -> None:
+        action = input("\nChoose an option:\n"
+                    "'y': Continue\n"
+                    "'n': Stop playing\n"
+                    "'info': See all verbs\n"
+                    "'intro': See instructions again\n -> ").strip().lower()
+
+        match action:
+            case "y":
+                pass
+            case "info":
+                self.show_info()
+            case "intro":
+                self.show_intro()
+            case "n":
+                self.playing = False
+            case _:
+                print("Invalid input. Continuing the game...")
+
+    def start(self) -> None:
+        self.playing = True
+        self.show_intro()
+        if input("Do you want to start the game? (y/n): ").strip().lower() == "y":
+            while self.playing:
+                self.ask_question()
+                self.handle_action()
+        print(f"\nGame Over! Your final score: {self.points} points. Thanks for playing! 👋")
 
 
 player = Game()
