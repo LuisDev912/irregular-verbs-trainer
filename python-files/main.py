@@ -35,42 +35,36 @@ class Game:
         for line in instructions:
             print_pause(line, 1.2)
         
-        if input("Do you want to start the game? y/n: \n ->").lower().strip() == "y":
-            self.main_game()
+    def ask_question(self) -> None:
+        chosen_verb = choice(list(verbs.keys()))
+        user_input = input(f"\nWhat's the past simple of '{chosen_verb}'?\n -> ").strip().casefold()
+
+        if user_input == verbs[chosen_verb].casefold():
+            print("✅ Correct!")
+            self.points += 1
+        else:
+            print(f"❌ Oops! The correct answer is: {verbs[chosen_verb]}")
+            self.points = max(0, self.points - 1)  # prevents negative points
+            self.incorrect_answers += 1
+
+        print(f"Current score: {self.points}")
+
+
+        #     action = input("\n What do you want to do next?, here are the options: \n'y' for continue, \n'n' for stop playing, \n'info' for see the information, \n'intro' for know how to play\n ->").lower().strip()
+        #     if action not in {"y", "n", "info", "intro"}:
+        #         print("not valid input. Returning to the game.")
+        #         continue
+        #     match action: #this is similar to switch case in other languages or an if else statement
+        #         case "y":
+        #             continue
+        #         case "info":
+        #             Game.show_info(self)
+        #         case "intro":
+        #             Game.show_intro(self)
+        #         case "n":
+        #             break
             
-    def main_game(self) -> None: 
-        while True:
-            chosen_verb = choice(list(verbs.keys()))
-            user_input = input(f"What's the past simple of {chosen_verb}?: \n------------------------------------------ \n ->").lower().strip()
-            #I use != instead of == to check wrong answers first
-            if user_input != verbs[chosen_verb]:
-                print(f" ❌ Opps, the correct answer is: {verbs[chosen_verb]}") 
-                self.points -= 1
-                self.incorrect_answers += 1
-            else: 
-                print("Correct! ☑️") #using emojis is not necessary, but it makes the game more fun
-                self.points += 1
-
-            if self.points < 0:
-                self.points = 0 #this avoids negative points
-
-            print(f"current points: {self.points}")
-
-            action = input("\n What do you want to do next?, here are the options: \n'y' for continue, \n'n' for stop playing, \n'info' for see the information, \n'intro' for know how to play\n ->").lower().strip()
-            if action not in {"y", "n", "info", "intro"}:
-                print("not valid input. Returning to the game.")
-                continue
-            match action: #this is similar to switch case in other languages or an if else statement
-                case "y":
-                    continue
-                case "info":
-                    Game.show_info(self)
-                case "intro":
-                    Game.show_intro(self)
-                case "n":
-                    break
-            
-        print(f"Your final score is: {self.points} points. Thanks for playing! 👋")
+        # print(f"Your final score is: {self.points} points. Thanks for playing! 👋")
 
 
 player = Game()
