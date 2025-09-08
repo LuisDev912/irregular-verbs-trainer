@@ -17,6 +17,18 @@ class Game:
         self.points: int = 0
         self.incorrect_answers: int = 0
         self.playing: bool = True
+        self.stats = {
+            "total_points": 0,
+            "total_incorrect": 0,
+            "history": []
+        }
+
+    def load_data(self) -> None:
+        if os.path.exists(DATA_FILE):
+            with open(DATA_FILE, "r", encoding="utf-8") as f:
+                self.stats = json.load(f)
+        else:
+            self.save_data() #This function isn't created yet
 
     def show_info(self):
         print("\nList of verbs and their past forms:\n")
