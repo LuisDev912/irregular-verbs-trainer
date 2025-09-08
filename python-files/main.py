@@ -1,8 +1,12 @@
+import json
+import os
 from random import choice
-from verbsContainer import verbs
+from verbs_container import verbs
 from time import sleep
 
 DEFAULT_SLEEP = 1.0
+DATA_FILE = "game_data.json"
+
 
 def print_pause(text: str, delay: float = DEFAULT_SLEEP) -> None:
     print(text)
