@@ -63,12 +63,20 @@ class Game:
         if user_input == verbs[chosen_verb].casefold():
             print("✅ Correct!")
             self.points += 1
+            self.stats["total_points"] += 1
         else:
             print(f"❌ Oops! The correct answer is: {verbs[chosen_verb]}")
             self.points = max(0, self.points - 1)  # prevents negative points
             self.incorrect_answers += 1
+            self.stats["total_incorrect"] += 1
+            self.stats["history"].append({
+                "verb": chosen_verb,
+                "your_answer": user_input,
+                "correct_answer": verbs[chosen_verb]
+            })
 
         print(f"Current score: {self.points}")
+        self.save_data()
 
 
     def handle_action(self) -> None:
@@ -98,6 +106,7 @@ class Game:
                 self.ask_question()
                 self.handle_action()
         print(f"\nGame Over! Your final score: {self.points} points. Thanks for playing! 👋")
+        self.save_data()
 
 
 if __name__ == "__main__":
