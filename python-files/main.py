@@ -28,7 +28,11 @@ class Game:
             with open(DATA_FILE, "r", encoding="utf-8") as f:
                 self.stats = json.load(f)
         else:
-            self.save_data() #This function isn't created yet
+            self.save_data()
+
+    def save_data(self) -> None:
+        with open(DATA_FILE, "w", encoding="utf-8") as f:
+            json.dump(self.stats, f, indent=4)
 
     def show_info(self):
         print("\nList of verbs and their past forms:\n")
