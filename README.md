@@ -1,4 +1,7 @@
 # Irregular Verbs Trainer
+
+![status](https://img.shields.io/badge/status-paused-yellow)
+
 A Python program to practice **irregular verbs** in English.  
 The program shows a verb in its infinitve form, and the user must type the correct **past simple** form.  
 
