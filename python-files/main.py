@@ -4,6 +4,17 @@ from random import choice
 from verbs_container import verbs
 from time import sleep
 
+# --- Constant variables ---
+
+# --- UI Symbols (Unicode, CLI-friendly) ---
+SYMBOLS = {
+    "correct": "✓",
+    "incorrect": "✗",
+    "arrow": "→",
+    "bullet": "•",
+    "separator": "─" * 40,
+}
+
 DEFAULT_SLEEP = 1.0
 DATA_FILE = "game_data.json"
 
