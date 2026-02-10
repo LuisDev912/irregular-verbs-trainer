@@ -56,14 +56,16 @@ class Game:
 
     def show_intro(self) -> None:
         instructions = [
-            "Welcome to the Past Simple Verb Game! 🎉",
-            "The instructions are simple:",
-            "1. The game will give you a verb in its base form, and you have to type its past simple form.",
-            "2. Each correct answer earns you 1 point, each wrong answer deducts 1 point.",
-            "3. Example: if the verb is 'go', you should type 'went'.",
-            "4. You can quit anytime by typing 'n' when asked if you want to continue.",
-            "Good luck! 🍀\n"
+            f"{SYMBOLS['separator']} \n PAST SIMPLE VERB GAME \n {SYMBOLS['separator']}",
+            "Instructions:",
+            f"{SYMBOLS['bullet']} The game gives you a verb in base form.",
+            f"{SYMBOLS['bullet']} Type its past simple form.",
+            f"{SYMBOLS['bullet']} +1 point for correct answers.",
+            f"{SYMBOLS['bullet']} -1 point for incorrect answers (never below 0).",
+            f"{SYMBOLS['bullet']} Type 'n' to quit anytime. \n",
+            "Example: go → went",
         ]
+
         for line in instructions:
             print_pause(line, 1.2)
         
@@ -72,11 +74,11 @@ class Game:
         user_input = input(f"\nWhat's the past simple of '{chosen_verb}'?\n -> ").strip().casefold()
 
         if user_input == verbs[chosen_verb].casefold():
-            print("✅ Correct!")
+            print(f"{SYMBOLS['correct']} Correct!")
             self.points += 1
             self.stats["total_points"] += 1
         else:
-            print(f"❌ Oops! The correct answer is: {verbs[chosen_verb]}")
+            print(f"{SYMBOLS['incorrect']} Oops! The correct answer is: {verbs[chosen_verb]}")
             self.points = max(0, self.points - 1)  # prevents negative points
             self.incorrect_answers += 1
             self.stats["total_incorrect"] += 1

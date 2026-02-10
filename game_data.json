@@ -1,16 +1,5 @@
 {
     "total_points": 1,
-    "total_incorrect": 2,
-    "history": [
-        {
-            "verb": "understand",
-            "your_answer": "undesrtood",
-            "correct_answer": "understood"
-        },
-        {
-            "verb": "draw",
-            "your_answer": "drow",
-            "correct_answer": "drew"
-        }
-    ]
+    "total_incorrect": 0,
+    "history": []
 }
